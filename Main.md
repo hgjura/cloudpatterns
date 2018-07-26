@@ -11,10 +11,10 @@ Some of the markdown files are generated from data stored in json files.
 This is primarily to avoid human error for pages that still require some HTML.
 The process that converts the`build`to markdown uses a utility script located in the `build` folder.
 To run the build script, navigate to the root folder of this repository.
-
+## List of patterns
 ## Understanding the local build process
 
-##Res
+## Resources
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjI2MTA0OTQ5LC02NTYyMDE5MzVdfQ==
+eyJoaXN0b3J5IjpbNjE4MDkzMzEyLC02NTYyMDE5MzVdfQ==
 -->
