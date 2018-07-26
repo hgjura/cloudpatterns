@@ -15,11 +15,11 @@ The process that converts the`build`to markdown uses a utility script located in
 To run the build script, navigate to the root folder of this repository.
 **Important:** version
 ## List of patterns
+
 ## Understanding the local build process
 
 ## Resources
-![Screenshot](https://raw.githubusercontent.com/serilog/serilog-sinks-eventlog/dev/assets/Screenshot.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA4Nzk2ODE3LDYxODA5MzMxMiwtNjU2Mj
-AxOTM1XX0=
+eyJoaXN0b3J5IjpbMjA4ODQ3Njk3Miw2MTgwOTMzMTIsLTY1Nj
+IwMTkzNV19
 -->
