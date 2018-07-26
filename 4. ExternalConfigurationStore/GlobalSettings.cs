@@ -10,13 +10,13 @@ using Microsoft.WindowsAzure.Storage;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Timers;
+using System.Configuration;
 
 namespace ExternalConfigurationStore
 {
     public class GlobalSettings
     {
-        string _connectionString = "DefaultEndpointsProtocol=https;AccountName=cloudpatternsamples;AccountKey=c4FTWjmIMRKIc68hPgSy6GQpfoqkrMsXj37CBYyweip3Id15N80vlMBTIBHk9qwoGyIdxKHbzsjbMIRd1x2M9w==;TableEndpoint=https://cloudpatternsamples.table.cosmosdb.azure.com:443/;";
-
+        string _connectionString = ConfigurationManager.ConnectionStrings["GlobalSettingsStoreConnectionString"].ConnectionString;
         public GlobalSettings()        {
             this.AppSettings = new ExpandoObject();
             this.UserSettings = new ExpandoObject();

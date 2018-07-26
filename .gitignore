@@ -257,3 +257,4 @@ paket-files/
 .idea/
 *.sln.iml
 
+/4. ExternalConfigurationStore/Settings.local.txt
