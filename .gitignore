@@ -258,3 +258,4 @@ paket-files/
 *.sln.iml
 
 /4. ExternalConfigurationStore/Settings.local.txt
+/4. ExternalConfigurationStore/App.config
