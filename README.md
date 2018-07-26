@@ -9,14 +9,12 @@
 
 This repo is build with the purpose of providing and maintaining some code examples & solutions as an illustration & extension of the Cloud Design Patterns project, maintained by [Microsoft patterns & practices](https://github.com/mspnp) Team. 
 
-Most books and web pages and projects about development patterns, are always accompanied by code snippets and samples to illustrate what the book or test describe. There is nothing wrong with that. Actually that is best; you dot want to be overloaded by code while you learn. But I wanted more. I wanted not to learn by reading books, but rather by writing code. And that code to be meaningful, complete and ready to be part of a larger solution. This is the intent behind the code in this repo: complete code, complete solution, with applied patterns and best-practices, and ready to be part of a larger solution. 
 
-### List of patterns
-- **Circuit Breaker**
-- **Retry**
-- **Amabassador**
-- **External Configuration Store**
-- More coming...
+Most books and web pages and projects about development patterns, are always accompanied by code snippets and samples to illustrate what the book or test describe. There is nothing wrong with that. Actually that is best; you dot want to be overloaded by code while you learn. 
+
+But I wanted more. I wanted not to learn by reading books, but rather by writing code. And that code to be meaningful, complete and ready to be part of a larger solution. 
+
+This is the intent behind the code in this repo: complete code, complete solution, with applied patterns and best-practices, and ready to be part of a larger solution.
 
 ### References
 Description of 32 of [Cloud Design Patterns
