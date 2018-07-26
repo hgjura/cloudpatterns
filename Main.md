@@ -6,7 +6,7 @@
     <br>
     (YACDPR)
 </p>
-<br>
+
 Some of the markdown files are generated from data stored in json files.
 This is primarily to avoid human error for pages that still require some HTML.
 The process that converts the`build`to markdown uses a utility script located in the `build` folder.
@@ -48,6 +48,6 @@ Events will appear under the Application log with the specified source name:
 
 ![Screenshot](https://raw.githubusercontent.com/serilog/serilog-sinks-eventlog/dev/assets/Screenshot.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyMzc4ODI1NCw2MTgwOTMzMTIsLTY1Nj
-IwMTkzNV19
+eyJoaXN0b3J5IjpbLTIwNTY0Mjk4NzIsNjE4MDkzMzEyLC02NT
+YyMDE5MzVdfQ==
 -->
