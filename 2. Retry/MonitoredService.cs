@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Retry
 {
@@ -63,14 +62,8 @@ namespace Retry
         }
 
         protected virtual ServiceDegradationState GetDegratedStateMapItem(ServiceState State, ServiceDegradationWeight Weight) => _degradedSettingsMap[new Tuple<ServiceState, ServiceDegradationWeight>(State, Weight)].Item1;
-        //{
-        //    return _degradedSettingsMap[new Tuple<ServiceState, ServiceDegradationWeight>(State, Weight)].Item1;
-        //}
 
         protected virtual int GetDegratedPercentageSeverityMapItem(ServiceState State, ServiceDegradationWeight Weight) => _degradedSettingsMap[new Tuple<ServiceState, ServiceDegradationWeight>(State, Weight)].Item2;
-        //{
-        //    return _degradedSettingsMap[new Tuple<ServiceState, ServiceDegradationWeight>(State, Weight)].Item2;
-        //}
 
         public virtual void NextState(ServiceState CurrentState, Exception ex = null)
         {

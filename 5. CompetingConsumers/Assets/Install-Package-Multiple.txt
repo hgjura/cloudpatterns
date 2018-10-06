@@ -1,0 +1,8 @@
+﻿Install-Package Serilog; 
+Install-Package Serilog.Sinks.ColoredConsole;
+Install-Package System.Configuration.ConfigurationManager;
+Install-Package Microsoft.Azure.ServiceBus;
+Install-Package Microsoft.Azure.Management.ServiceBus.Fluent;
+Install-Package Microsoft.Azure.Management.ServiceBus;
+Install-Package Colorful.Console;
+Install-Package Alba.CsConsoleFormat

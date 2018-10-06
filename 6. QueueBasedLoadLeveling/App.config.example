@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <connectionStrings>
+    <remove name="LocalSqlServer"/>
+    <add name="AzureServiceBusConnectionString" connectionString="[ENTER YOUR AZURE SERVICE BUS CONNECTION STRING HERE]"/>
+  </connectionStrings>
+  <appSettings>
+    <add key="Deploy_ClientId" value="[GUID OF THE APPLICATION ID OF THE SERVICE PRINCIPAL]" />
+    <add key="Deploy_ClientSecret" value="[PASSWORD ENTERED AT THE TIME OF CREATION OF THE SERVICE PRINCIPAL]" />
+    <add key="Deploy_TenantId" value="[TENANT ID OF THE SUBSCRIPTION]" />
+    <add key="Deploy_SubscriptionId" value="[SUBSCRIPTION ID]" />
+    <add key="Deploy_ResourceGroupName" value="[RESOURCE GROUP NAME WHERE THE SERVICE BUS NAMESPACE IS]" />
+    <add key="Deploy_ServiceBusNamespaceName" value="[NAME OF THE SERVICE BUS NAMEPSACE]" />
+    <add key="QueueName" value="[NAME OF THE QUEUE]" />
+  </appSettings>
+</configuration>

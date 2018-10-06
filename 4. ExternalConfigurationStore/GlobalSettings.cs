@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Timers;
 using System.Configuration;
+using System.Linq;
 
 namespace ExternalConfigurationStore
 {
@@ -204,7 +205,6 @@ namespace ExternalConfigurationStore
 
     }
 
-    
     public static class ExpandoObjectExtension
     {
         public static void AddSettingsCollection(this ExpandoObject Setting, string Collection, PropertyChangedEventHandler d)
@@ -226,6 +226,12 @@ namespace ExternalConfigurationStore
         public static bool Contains(this ExpandoObject Setting, string Key)
         {
             return ((IDictionary<String, object>)Setting).ContainsKey(Key);
+        }
+
+        public static T FirstOrDefault<T>(this ExpandoObject eo, string key)
+        {
+            object r = eo.FirstOrDefault(x => x.Key == key).Value;
+            return (r is T) ? (T)r : default(T);
         }
     }
 }

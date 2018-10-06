@@ -20,8 +20,8 @@ namespace ExternalConfigurationStore
 
             var gs = new GlobalSettings()
                 .With(
-                    new LoggerConfiguration().WriteTo.ColoredConsole().CreateLogger(), 
-                    TimeSpan.FromMinutes(10)
+                    Logger: new LoggerConfiguration().WriteTo.ColoredConsole().CreateLogger(), 
+                    ValidationTimeSpan: TimeSpan.FromMinutes(10)
                 );
 
             var AppSettings = gs.ForApplication("ExternalConfigurationStore");

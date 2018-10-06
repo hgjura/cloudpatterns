@@ -9,10 +9,7 @@
 
 This repo is build with the purpose of providing and maintaining some code examples & solutions as an illustration & extension of the Cloud Design Patterns project, maintained by [Microsoft patterns & practices](https://github.com/mspnp) Team. 
 
-
-Most books and web pages and projects about development patterns, are always accompanied by code snippets and samples to illustrate what the book or test describe. There is nothing wrong with that. Actually that is best; you dot want to be overloaded by code while you learn. But I wanted more. I wanted not to learn by reading books, but rather by writing code. And that code to be meaningful, complete and ready to be part of a larger solution. 
-
-This is the intent behind the code in this repo: complete code, complete solution, with applied patterns and best-practices, and ready to be part of a larger solution.
+The intent behind the code in this repo: complete code, complete solution, with applied patterns and best-practices, and ready to be part of a larger solution.
 
 ### List of patterns 
 Description and details for each patterns are found in the project folder of each pattern
@@ -20,6 +17,12 @@ Description and details for each patterns are found in the project folder of eac
 - **Retry**
 - **Ambassador**
 - **External Configuration Store**
+- **Competing Consumer**
+- **Queue Based Load Leveling**
+- **Priority Queue**
+- **Pipes and Filters**
+- **Scheduler Agent Supervisor** (Coming next)
+
 - More coming soon...
 
 
@@ -31,5 +34,3 @@ Description of 32 of [Cloud Design Patterns
 Official Github [repo](https://github.com/mspnp/cloud-design-patterns) of cloud patterns, with code samples for a handful of patterns. Maintained by [Microsoft patterns & practices](https://github.com/mspnp) Team. [Updated infrequently, last time was in 2017]
 
 Older listing of the [Cloud Patterns](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn600223%28v=pandp.10%29) from an older official site, published by by [Microsoft patterns & practices](https://github.com/mspnp) Team. [Old, 2014]
-
-

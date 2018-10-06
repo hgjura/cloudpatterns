@@ -6,7 +6,6 @@ namespace CircuitBreaker
 {
     public abstract class MonitoredService
     {
-        protected readonly object monitor = new object();
         protected int _retry = 3;
         protected TimeSpan _timespan = TimeSpan.FromMinutes(10);
         protected int _failures = 0;

@@ -9,14 +9,12 @@ namespace ExternalConfigurationStore
 {
     public abstract class MonitoredService
     {
-        protected readonly object _monitor;
         protected TimeSpan _timeOut;
         protected ServiceState _servicState;
         protected Dictionary<Tuple<ServiceState, ServiceDegradationWeight>, Tuple<ServiceDegradationState, int>> _degradedSettingsMap;
 
         public MonitoredService()
         {
-            _monitor = new object();
             _timeOut = TimeSpan.Zero;
             _servicState = ServiceState.Closed;
             _degradedSettingsMap = new Dictionary<Tuple<ServiceState, ServiceDegradationWeight>, Tuple<ServiceDegradationState, int>>();
@@ -148,9 +146,7 @@ namespace ExternalConfigurationStore
         {
             object return_value = null;
 
-            lock (_monitor)
-            {
-                try
+            try
                 {
                     if (TimeoutTimeSpan > TimeSpan.Zero)
                     {
@@ -180,9 +176,7 @@ namespace ExternalConfigurationStore
                     this.NextState(State, ex);
                 }
 
-                return return_value;
-
-            }
+            return return_value;           
         }
         public abstract object Run(params object[] list);
         public abstract object Run(dynamic list);

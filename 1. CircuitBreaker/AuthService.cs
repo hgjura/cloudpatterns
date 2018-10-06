@@ -1,7 +1,5 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CircuitBreaker
 {
@@ -18,93 +16,42 @@ namespace CircuitBreaker
         {
             object return_value = null;
 
-            lock (monitor)
-            {
-                switch (this.State)
-                {
-                    case ServiceState.Closed:
-                        {
-                            try
+            switch (this.State)
+                    {
+                        case ServiceState.Closed:
                             {
-                                //run service code
-
-                                return_value = Utils.SimulateServiceCall(Code);
-
-                                //
-
-                                //set the state = Closed values
-                                this._failures = 0;
-                                LastSuccesfullRunUtc = DateTime.UtcNow;
-                                LastFailedRunUtc = DateTime.MinValue;
-                                LastException = null;
-                            }
-                            catch (Exception ex)
-                            {
-                                return_value = null;
-
-                                //set the state != Closed values
-                                this._failures++;
-                                LastSuccesfullRunUtc = DateTime.MinValue;
-                                LastFailedRunUtc = DateTime.UtcNow;
-                                LastException = ex;
-
-                                //set the state to HalfOpen
-                                this.State = ServiceState.HalfOpen;
-                                OnServiceStateChanged(new ServiceChangedEventArgs() { Service = this });
-                            }
-                        }
-                        break;
-                    case ServiceState.HalfOpen:
-                        {
-                            try
-                            {
-                                //run service code
-
-                                return_value = Utils.SimulateServiceCall(Code);
-
-                                //
-
-
-                                //set the state = Closed values
-                                this._failures = 0;
-                                LastSuccesfullRunUtc = DateTime.UtcNow;
-                                LastFailedRunUtc = DateTime.MinValue;
-                                LastException = null;
-
-                                //set the state to closed
-                                this.State = ServiceState.Closed;
-                                OnServiceStateChanged(new ServiceChangedEventArgs() { Service = this });
-
-                            }
-                            catch (Exception ex)
-                            {
-                                return_value = null;
-
-                                //set the state != Closed values
-                                this._failures++;
-                                LastSuccesfullRunUtc = DateTime.MinValue;
-                                LastFailedRunUtc = DateTime.UtcNow;
-                                LastException = ex;
-
-                                //set the state to Open
-                                if (this._failures >= this._retry)
+                                try
                                 {
-                                    this.State = ServiceState.Open;
+                                    //run service code
+
+                                    return_value = Utils.SimulateServiceCall(Code);
+
+                                    //
+
+                                    //set the state = Closed values
+                                    this._failures = 0;
+                                    LastSuccesfullRunUtc = DateTime.UtcNow;
+                                    LastFailedRunUtc = DateTime.MinValue;
+                                    LastException = null;
+                                }
+                                catch (Exception ex)
+                                {
+                                    return_value = null;
+
+                                    //set the state != Closed values
+                                    this._failures++;
+                                    LastSuccesfullRunUtc = DateTime.MinValue;
+                                    LastFailedRunUtc = DateTime.UtcNow;
+                                    LastException = ex;
+
+                                    //set the state to HalfOpen
+                                    this.State = ServiceState.HalfOpen;
                                     OnServiceStateChanged(new ServiceChangedEventArgs() { Service = this });
                                 }
                             }
-                        }
-                        break;
-                    case ServiceState.Open:
-                        {
-                            if (this.LastFailedRunUtc.Add(this._timespan) > DateTime.UtcNow)
+                            break;
+                        case ServiceState.HalfOpen:
                             {
-                                //service still in timeout mode
-                                return_value = null;
-                            }
-                            else
-                            {
-
                                 try
                                 {
                                     //run service code
@@ -130,24 +77,71 @@ namespace CircuitBreaker
                                     return_value = null;
 
                                     //set the state != Closed values
-                                    this._failures = 0;
+                                    this._failures++;
                                     LastSuccesfullRunUtc = DateTime.MinValue;
                                     LastFailedRunUtc = DateTime.UtcNow;
                                     LastException = ex;
 
-                                    //set the state to HalfOpen
-                                    this.State = ServiceState.HalfOpen;
-                                    OnServiceStateChanged(new ServiceChangedEventArgs() { Service = this });
+                                    //set the state to Open
+                                    if (this._failures >= this._retry)
+                                    {
+                                        this.State = ServiceState.Open;
+                                        OnServiceStateChanged(new ServiceChangedEventArgs() { Service = this });
+                                    }
                                 }
-
                             }
-                        }
-                        break;
-                }
+                            break;
+                        case ServiceState.Open:
+                            {
+                                if (this.LastFailedRunUtc.Add(this._timespan) > DateTime.UtcNow)
+                                {
+                                    //service still in timeout mode
+                                    return_value = null;
+                                }
+                                else
+                                {
 
-                return return_value;
+                                    try
+                                    {
+                                        //run service code
 
-            }
+                                        return_value = Utils.SimulateServiceCall(Code);
+
+                                        //
+
+
+                                        //set the state = Closed values
+                                        this._failures = 0;
+                                        LastSuccesfullRunUtc = DateTime.UtcNow;
+                                        LastFailedRunUtc = DateTime.MinValue;
+                                        LastException = null;
+
+                                        //set the state to closed
+                                        this.State = ServiceState.Closed;
+                                        OnServiceStateChanged(new ServiceChangedEventArgs() { Service = this });
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        return_value = null;
+
+                                        //set the state != Closed values
+                                        this._failures = 0;
+                                        LastSuccesfullRunUtc = DateTime.MinValue;
+                                        LastFailedRunUtc = DateTime.UtcNow;
+                                        LastException = ex;
+
+                                        //set the state to HalfOpen
+                                        this.State = ServiceState.HalfOpen;
+                                        OnServiceStateChanged(new ServiceChangedEventArgs() { Service = this });
+                                    }
+
+                                }
+                            }
+                            break;
+                    }
+
+            return return_value;           
         }
     }
 }
